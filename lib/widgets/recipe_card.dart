@@ -25,7 +25,7 @@ class RecipeCard extends StatelessWidget {
       child: InkWell(
         onTap: onTap,
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.stretch, // Changed this line
           children: [
             AspectRatio(
               aspectRatio: 16 / 9,
@@ -34,10 +34,8 @@ class RecipeCard extends StatelessWidget {
                 fit: BoxFit.cover,
                 errorBuilder: (context, error, stackTrace) {
                   return Container(
-                    color: Theme.of(context).colorScheme.surfaceVariant,
-                    child: const Center(
-                      child: Icon(Icons.restaurant, size: 48),
-                    ),
+                    color:
+                        Theme.of(context).colorScheme.surfaceContainerHighest,
                   );
                 },
               ),
@@ -50,17 +48,6 @@ class RecipeCard extends StatelessWidget {
                   Text(
                     recipe.name,
                     style: Theme.of(context).textTheme.titleMedium,
-                  ),
-                  const SizedBox(height: 8),
-                  Row(
-                    children: [
-                      const Icon(Icons.timer_outlined, size: 16),
-                      const SizedBox(width: 4),
-                      Text(
-                        recipe.cookingTime,
-                        style: Theme.of(context).textTheme.bodySmall,
-                      ),
-                    ],
                   ),
                 ],
               ),

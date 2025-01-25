@@ -28,9 +28,12 @@ class RecipeDetailPage extends StatelessWidget {
             padding: const EdgeInsets.all(16.0),
             sliver: SliverList(
               delegate: SliverChildListDelegate([
+                Text('Instructions',
+                    style: Theme.of(context).textTheme.titleLarge),
+                const SizedBox(height: 8),
                 Text(
-                  recipe.description,
-                  style: Theme.of(context).textTheme.bodyLarge,
+                  recipe.instructions,
+                  style: Theme.of(context).textTheme.bodyMedium,
                 ),
                 const SizedBox(height: 24),
                 Text(
@@ -45,36 +48,6 @@ class RecipeDetailPage extends StatelessWidget {
                           const Icon(Icons.fiber_manual_record, size: 8),
                           const SizedBox(width: 8),
                           Text(ingredient),
-                        ],
-                      ),
-                    )),
-                const SizedBox(height: 24),
-                Text(
-                  'Instructions',
-                  style: Theme.of(context).textTheme.titleLarge,
-                ),
-                const SizedBox(height: 8),
-                ...recipe.instructions.asMap().entries.map((entry) => Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 8),
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          CircleAvatar(
-                            radius: 12,
-                            backgroundColor:
-                                Theme.of(context).colorScheme.primaryContainer,
-                            child: Text(
-                              '${entry.key + 1}',
-                              style: TextStyle(
-                                color: Theme.of(context)
-                                    .colorScheme
-                                    .onPrimaryContainer,
-                                fontSize: 12,
-                              ),
-                            ),
-                          ),
-                          const SizedBox(width: 12),
-                          Expanded(child: Text(entry.value)),
                         ],
                       ),
                     )),
